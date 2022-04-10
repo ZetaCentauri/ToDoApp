@@ -16,8 +16,6 @@ const NewTaskForm = ({onAddTask}) => {
             status: "open"
             };
 
-        console.log(task);
-
         createTask(task, onAddTask);
     }
 

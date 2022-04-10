@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { updateTask, removeTask } from "./API/tasks";
 import { getOperations } from "./API/operations";
 import Button from "./button";
+import Operations from "./operations";
 
 
 const Task = ({title, description, id, status: taskStatus, onDeleteTask}) => {
@@ -37,7 +38,8 @@ const Task = ({title, description, id, status: taskStatus, onDeleteTask}) => {
      * After component mount fetch all operation in this task
      * @function getOperations - API function
      */
-    getOperations(id,setDisplayOperationInput);
+    
+    getOperations(id,setOperationsList);
   }, []);
 
 
@@ -74,13 +76,13 @@ const Task = ({title, description, id, status: taskStatus, onDeleteTask}) => {
                   className="ml-2"/>}
         </div>
       </div>
-{/* 
+
       <Operations taskID={id}
-                  form={displayOperationInput}
-                  setForm={setDisplayOperationInput}
+                  displayForm={displayOperationInput}
+                  setDisplayForm={setDisplayOperationInput}
                   operationsList={operationsList}
-                  setOperationsList={setDisplayOperationInput}
-                  status={status}/> */}
+                  setOperationsList={setOperationsList}
+                  status={status}/>
     </section>
   );
 }
