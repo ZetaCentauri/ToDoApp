@@ -57,6 +57,7 @@ const Operations = ({taskID, displayForm, setDisplayForm, operationsList, setOpe
         
         <ul className="list-group list-group-flush">
             {operationsList.map((operation)=>{
+                console.log(operation);
                     return <Operation  key={operation.id} {...operation} onRemoveOperation={deleteOperation} status={status}/>
             })}
         </ul>

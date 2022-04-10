@@ -38,3 +38,37 @@ export const createOperation = (id, operation, successCallback) => {
   })
   .catch();
 }
+
+export const removeOperation = (id, successCallback) => {
+  fetch(`${API_URL}/operations/${id}`, {
+    headers: {
+      "Authorization": API_KEY
+    },
+    method: "DELETE"
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (data.error === false && typeof successCallback === "function") {
+        successCallback();
+      }
+    })
+    .catch(err => console.log(err));
+};
+
+export const updateOperation = (id, operation, successCallback) => {
+  fetch(`${API_URL}/operations/${id}`, {
+    headers: {
+      "Authorization": API_KEY,
+      "Content-Type": "application/json"
+    },
+    method: "PUT",
+    body: JSON.stringify(operation)
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    if(data.error === false && typeof successCallback === "function") {
+      successCallback(data.data);
+    }
+  })
+  .catch();
+}
